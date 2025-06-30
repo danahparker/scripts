@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# usage: ffmpeg-add-black-outline img1.jpg img2.png ...
+# adds a black outline to an image
+pos=1
+for img in "$@"; do
+    [ -e "$img" ] || continue
+    ffmpeg -i "$img" -vf "pad=iw+20:ih+20:10:10:black" "bordered_$img"
+done
