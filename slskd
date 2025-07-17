@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+[ ! -s "$HOME/music/todo" ] && mkdir -p $HOME/music/todo
+soulseek d "$1" --quality=320 --mode=mp3 --destination=$HOME/music/todo

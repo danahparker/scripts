@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+ln -sf ~/.cache/wal/picom.conf ~/.config/picom/picom.conf
+ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
+ln -sf ~/.cache/wal/pywal16.yml ~/.config/termusic/themes/pywal16.yml
+
+recomplieslock #colors-wal-slock.h, could just use xresources patch for slock instead
+pgrep qutebrowser > /dev/null && qutebrowser ':config-source' # refresh qutebrowser if running
+pkill dunst; setsid -f dunst
+refresh # xrdb for dwm bar
+notify-send "Updated wallpaper and color scheme."
+sudo openrgb --noautoconnect -c $(tail -c +2 ~/.cache/wal/rgb) -b 65 # set rgb lsat so it doesn't hang
